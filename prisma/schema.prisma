@@ -12,3 +12,27 @@ datasource db {
   url      = env("DATABASE_URL")
 
 }
+
+model Player {
+    id          String   @id @unique @default(cuid())
+    firstName   String
+    lastName    String?
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @default(now()) @updatedAt
+    dob         DateTime
+    height      String
+    image       String?
+    currentClub Club?    @relation(fields: [clubId], references: [id])
+    clubId      String?
+  }
+  
+  model Club {
+    id     String   @id @unique @default(cuid())
+    name   String
+    Player Player[]
+  }
+  
+  model New {
+    id   String @id @unique @default(cuid())
+    name String
+  }

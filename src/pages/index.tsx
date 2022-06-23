@@ -9,7 +9,7 @@ const Home: NextPage = () => {
 
   if (isLoading || !data) return <div>...Loading</div>;
 
-  return <div>{data?.greeting}</div>
+  return <div>{data.greeting}</div>
 
 
   return (
